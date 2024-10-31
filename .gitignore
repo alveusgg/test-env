@@ -1,2 +1,6 @@
+/.idea/
+
+/containers/mediamtx/recordings/*
+
 *.env
 !*.env.example
