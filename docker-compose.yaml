@@ -1,0 +1,27 @@
+services:
+  nimble:
+    platform: linux/amd64
+    build:
+      context: containers/nimble
+    environment:
+      - WMSPANEL_SERVER_NAME=alveus-pollinator-watch-nimble
+      - WMSPANEL_ACCOUNT
+      - WMSPANEL_PASS
+      - WMSPANEL_TRANSCODER_LICENSE
+      - WMSPANEL_TRANSCODER_LICENSE_PASS
+    ports:
+      - "8081:8081"
+      - "8082:8082"
+    expose:
+      - "8081"
+      - "1935"
+      - "554"
+      - "443"
+      - "4444/udp"
+      - "20000-21000/tcp"
+    healthcheck:
+      test: curl --fail http://127.0.0.1:8082/manage/server_status || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 20s
+      timeout: 10s

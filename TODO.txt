@@ -1,0 +1,25 @@
+
+
+Alveus Pollinator Watch
+
+
+- setup test environment
+    - dummy cam: srt/rtsp ~8mbps 1080p
+- on-prem mediaserver + dvr
+- cam access logging service
+- nvr ingest service
+- clip ingest service
+- extension backend
+	- cam layout
+	- info hosting
+- twitch: extension:
+	- layout aware overlay
+	- capture button
+- website:
+	- info / guide page
+	- tech debt:
+		- move alveusgg chatbot into main chatbot
+		- un-monorepo the repo?
+		- move to postgres/drizzle?
+		- update deps
+- ccc
