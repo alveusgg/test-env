@@ -1,11 +1,11 @@
 {
   "type": "module",
+  "scripts": {
+    "start": "node --experimental-strip-types server.ts"
+  },
   "dependencies": {
     "obs-websocket-js": "^5.0.6",
     "ws": "^8.18.0"
-  },
-  "scripts": {
-    "start": "node --experimental-strip-types server.ts"
   },
   "devDependencies": {
     "@types/ws": "^8.5.12"
