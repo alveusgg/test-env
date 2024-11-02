@@ -15,6 +15,9 @@ services:
       - OBS_KEY_SPACE_CLOUD=
       - OBSBOT_HOST=localhost
       - OBSBOT_PORT=12345
+      - AXIS_USERNAME=${AXIS_USERNAME:-alveus}
+      - AXIS_PASSWORD=${AXIS_PASSWORD:-secret}
+      - AXIS_GEORGIE_IP=axis-mock:6001
     depends_on:
       - obs-local
       - obs-cloud
@@ -62,3 +65,12 @@ services:
       - PORT=12345
     expose:
       - "12345"
+
+  axis-mock:
+    build: containers/axis-mock
+    environment:
+      - PORT=6001
+      - AXIS_USERNAME=${AXIS_USERNAME:-alveus}
+      - AXIS_PASSWORD=${AXIS_PASSWORD:-secret}
+    expose:
+      - "6001"
