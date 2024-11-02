@@ -17,6 +17,13 @@ For development, you will also need Node.js and npm.
 
 ## Getting Started
 
+Initialize the submodules:
+
+```
+git submodule init
+git submodule update
+```
+
 Copy the `.env.example` file to `.env` and fill in the necessary values.
 
 For the chatbot you will need to get Twitch access tokens. See [Chatbot](https://github.com/alveusgg/chatbot).
@@ -32,6 +39,12 @@ OBS, enable the websocket server in OBS and configure the URL in `.env`.
 OBS_WS=ws://host.docker.internal:4455
 ```
 
+To get video from the MediaMTX proxy, you can use the following URL in your media source:
+
+```
+rtsp://localhost:8554/georgie
+```
+
 ## Clips service
 
 The clips service offers a very rudimentary API to retrieve clips.
@@ -42,7 +55,7 @@ changed the port in the `docker-compose.yaml` file.
 Example to get a clip:
 
 ```
-http://127.0.0.1:12000/get-clip/georgie/?start=2024-11-02T14:29:00.000Z&duration=30
+http://localhost:12000/get-clip/georgie/?start=2024-11-02T14:29:00.000Z&duration=30
 ```
 
 This should give you an HTTP 200 response with the public URL to the clip.
