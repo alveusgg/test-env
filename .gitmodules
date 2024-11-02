@@ -1,0 +1,4 @@
+[submodule "containers/chatbot/app"]
+	path = containers/chatbot/app
+	url = https://github.com/alveusgg/chatbot
+	branch = pjeweb/twitch-env

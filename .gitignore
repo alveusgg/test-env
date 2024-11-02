@@ -1,6 +1,11 @@
 /.idea/
 
-/containers/mediamtx/recordings/*
+/containers/cam-proxy/recordings/*
+/containers/chatbot/tokens/tokens.json
+
+node_modules/
 
 *.env
 !*.env.example
+
+.DS_Store

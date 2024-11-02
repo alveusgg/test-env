@@ -1,6 +1,9 @@
+playback: yes
+playbackAddress: :9996
+
 paths:
   cam1proxy:
-    source: srt://cam1:8890?streamid=read:cam1
+    source: srt://cam:8890?streamid=read:cam1
     record: yes
     recordPath: ./recordings/%path/%Y-%m-%d_%H-%M-%S-%f
 

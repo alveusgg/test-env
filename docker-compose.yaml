@@ -1,27 +1,64 @@
 services:
-  mediamtx:
+  chatbot:
+    build:
+      context: containers/chatbot/app
+    environment:
+      - TWITCH_CHANNELS=${TWITCH_CHANNELS}
+      - ALVEUS_CLIENT_ID=${ALVEUS_CLIENT_ID}
+      - ALVEUS_CLIENT_SECRET=${ALVEUS_CLIENT_SECRET}
+      - ALVEUS_TWITCH_ID=${ALVEUS_TWITCH_ID}
+      - ALVEUS_TOKEN_PATH=../tokens/tokens.json
+      - TWITCH_TOKEN_PATH=/tokens/tokens.json
+      - OBS_WS=${OBS_WS}
+      - OBS_KEY=
+      - OBS_WS_SPACE_CLOUD=ws://obs-cloud:12345
+      - OBS_KEY_SPACE_CLOUD=
+      - OBSBOT_HOST=localhost
+      - OBSBOT_PORT=12345
+    depends_on:
+      - obs-local
+      - obs-cloud
+    volumes:
+      - ./containers/chatbot/data:/home/node/app/src/data
+      - ./containers/chatbot/tokens:/home/node/app/tokens
+
+  cam-proxy:
     image: bluenviron/mediamtx:latest-ffmpeg
     build:
-      context: containers/mediamtx
+      context: containers/cam-proxy
     restart: always
+    environment:
+      - MTX_PROTOCOLS=tcp
+    ports:
+      - "8554:8554"
+      - "1935:1935"
+      - "8888:8888"
+      - "8889:8889"
+      - "8890:8890/udp"
+      - "8189:8189/udp"
+      - "9996:9996"
     volumes:
-      - ./containers/mediamtx/mediamtx.yml:/mediamtx.yml
-      - ./containers/mediamtx/recordings:/recordings
+      - ./containers/cam-proxy/mediamtx.yml:/mediamtx.yml
+      - ./containers/cam-proxy/recordings:/recordings
 
-  cam1:
+  cam:
     image: bluenviron/mediamtx:latest-ffmpeg
     build:
-      context: containers/mediamtx
+      context: containers/cam
     restart: always
     volumes:
-      - ./containers/cam1/mediamtx.yml:/mediamtx.yml
+      - ./containers/cam/mediamtx.yml:/mediamtx.yml
 
-  #cam1_ffmpeg:
-  #  image: linuxserver/ffmpeg
-  #  # ingest to nimble:
-  #  #command: -re -f lavfi -i testsrc2=size=3840x2160:rate=60 -f lavfi -i aevalsrc="sin(0*2*PI*t)" -c:v libx264 -r 30 -g 30 -preset fast -vb 8000k -pix_fmt rgb24 -pix_fmt yuv420p -f rtsp rtsp://ingest:6S3LiiD3897Ap3oQsT7X53aTEthKGF@nimble:20001/pollinator-demo/cam1
-  #  # ingest to mediamts:
-  #  command: -re -f lavfi -i testsrc2=size=3840x2160:rate=60 -f lavfi -i aevalsrc="sin(0*2*PI*t)" -c:v libx264 -r 30 -g 30 -preset fast -vb 8000k -pix_fmt rgb24 -pix_fmt yuv420p -f srt "srt://mediamtx:8890/?streamid=publish:cam1&pkt_size=1316"
-  #  #depends_on:
-  #  #  nimble:
-  #  #    condition: service_healthy
+  obs-local:
+    build: containers/obs-mock
+    environment:
+      - PORT=12345
+    expose:
+      - "12345"
+
+  obs-cloud:
+    build: containers/obs-mock
+    environment:
+      - PORT=12345
+    expose:
+      - "12345"
