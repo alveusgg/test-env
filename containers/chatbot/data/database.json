@@ -604,10 +604,7 @@
     "roamSpeed": "40",
     "roamIndex": 0,
     "roamDirection": "reverse",
-    "roamList": [
-      "tmp1",
-      "tmp2"
-    ]
+    "roamList": ["tmp1", "tmp2"]
   },
   "georgie": {
     "presets": {
@@ -1634,10 +1631,7 @@
     "roamSpeed": "50",
     "roamIndex": 1,
     "roamDirection": "forward",
-    "roamList": [
-      "fenn",
-      "belowramp"
-    ],
+    "roamList": ["fenn", "belowramp"],
     "speed": "84"
   },
   "foxwideangle": {
@@ -1709,9 +1703,7 @@
     "presets": {},
     "isRoaming": false
   },
-  "customcam": [
-    "fullcamgeorgie"
-  ],
+  "customcam": ["fullcamgeorgie"],
   "customcambig": true,
   "hankcorner": {
     "presets": {},
@@ -2299,14 +2291,7 @@
     "roamTime": "2",
     "roamIndex": 2,
     "roamDirection": "forward",
-    "roamList": [
-      "home",
-      "right",
-      "bridger",
-      "bridgec",
-      "bridgel",
-      "left"
-    ],
+    "roamList": ["home", "right", "bridger", "bridgec", "bridgel", "left"],
     "roamSpeed": "90"
   },
   "layoutpresets": {
@@ -2388,25 +2373,15 @@
       "command": "customcamsbig"
     },
     "split": {
-      "list": [
-        "fullcamwolf",
-        "fullcamwolfindoor",
-        "fullcamwolfcorner"
-      ],
+      "list": ["fullcamwolf", "fullcamwolfindoor", "fullcamwolfcorner"],
       "command": "customcams"
     },
     "pip": {
-      "list": [
-        "fullcamphone",
-        "fullcamwolfcorner"
-      ],
+      "list": ["fullcamphone", "fullcamwolfcorner"],
       "command": "customcamstl"
     },
     "wolfpip": {
-      "list": [
-        "fullcamwolfindoor",
-        "fullcamwolfcorner"
-      ],
+      "list": ["fullcamwolfindoor", "fullcamwolfcorner"],
       "command": "customcamsbr"
     }
   },
@@ -2559,11 +2534,7 @@
     "roamSpeed": "10",
     "roamIndex": 1,
     "roamDirection": "forward",
-    "roamList": [
-      "a",
-      "b",
-      "c"
-    ]
+    "roamList": ["a", "b", "c"]
   },
   "marty": {
     "presets": {

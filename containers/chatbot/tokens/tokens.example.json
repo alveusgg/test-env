@@ -1,9 +1,6 @@
 {
   "accessToken": "xxxx",
   "refreshToken": "xxxx",
-  "scope": [
-    "chat:read",
-    "chat:edit"
-  ],
+  "scope": ["chat:read", "chat:edit"],
   "obtainmentTimestamp": 1730497394
 }
