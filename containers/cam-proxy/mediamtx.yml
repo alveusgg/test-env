@@ -2,14 +2,14 @@ playback: yes
 playbackAddress: :9996
 
 paths:
-  cam1proxy:
-    source: srt://cam:8890?streamid=read:cam1
+  georgie:
+    source: srt://cam:8890?streamid=read:georgie
     record: yes
     recordPath: ./recordings/%path/%Y-%m-%d_%H-%M-%S-%f
 
   #camops:
-  #cam1trans:
-  #  source: rtmp://localhost/cam1
+  #transcode:
+  #  source: rtmp://localhost/georgie
   #  runOnReady: >
   #    ffmpeg -i rtsp://localhost:$RTSP_PORT/$MTX_PATH -c:a copy -c:v libx264 -bf 0 -crf 30 -vf scale=-1:720 -preset superfast -tune zerolatency -f rtsp rtsp://localhost:$RTSP_PORT/camops
   #  runOnReadyRestart: yes
