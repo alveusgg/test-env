@@ -74,3 +74,15 @@ services:
       - AXIS_PASSWORD=${AXIS_PASSWORD:-secret}
     expose:
       - "6001"
+
+  clips-service:
+    build: containers/clips-service
+    environment:
+      - PORT=12000
+      - PROXY_URL=http://cam-proxy:9996
+    ports:
+      - "12000:12000"
+    expose:
+      - "12000"
+    volumes:
+      - ./containers/clips-service/public:/home/node/app/public
