@@ -30,22 +30,33 @@ For the chatbot you will need to get Twitch access tokens. See [Chatbot](https:/
 
 Run `docker compose up` to start up the environment.
 
-## Connect with actual OBS on host machine
+## OBS
 
 To test stuff in OBS you can run it on the host. For this, set up the scenes in 
-OBS, enable the websocket server in OBS and configure the URL in `.env`.
+OBS. You can import the Scene Collection in [obs/test-scene-collection/LiveCams.json](./obs/test-scene-collection/LiveCams.json) 
+to get started. You will probably have "check for missing files" and select the same directory as the collection file.
+
+Next enable the websocket server in OBS and configure the URL in `.env`:
 
 ```
 OBS_WS=ws://host.docker.internal:4455
 ```
 
-To get video from the MediaMTX proxy, you can use the following URL in your media source:
+To get video from the MediaMTX proxy, you can use the following URL in the media sources (here for georgie):
 
 ```
 rtsp://localhost:8554/georgie
 ```
 
-## Clips service
+### Mocked OBS Server (WIP)
+
+If you do not want to use OBS on your host machine, you can use the mocked OBS server.
+
+## Chatbot
+
+TODO
+
+## Clips service (WIP)
 
 The clips service offers a very rudimentary API to retrieve clips.
 
@@ -65,3 +76,12 @@ This should give you an HTTP 200 response with the public URL to the clip.
 ```
 
 You should be able to access the clip at `http://localhost:12000/public/georgie-2024-10-2-14-29-0-0-30.mp4`.
+
+## MediaMTX Proxy (WIP)
+
+TODO
+
+## Simulated Cams (WIP)
+
+To simulate the cameras, we use MediaMTX with a ffmpeg test source and a mocked Axis API server.
+
